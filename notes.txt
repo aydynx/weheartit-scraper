@@ -1,0 +1,52 @@
+P35 — Today at 2:43 PM
+Here
+-
+"type" : "module"
+
+In your package.json file
+- Then do npm i node-fetch
+- Then
+import fetch from "node-fetch";
+import cheerio from "cheerio";
+
+async function fetchDOM (url) {
+...
+}
+
+(async () => {
+    const maxPages = 1;
+
+    for (let i = 0; i < maxPages; ++i) {
+        const queryParams = new URLSearchParams({
+            query: "cars",
+            page: i + 1
+        });
+
+        const $ = await fetchDOM(`https://weheartit.com/search/entries?${queryParams}`);
+
+        console.log($("img.entry-thumbnail"));
+    ...
+    }
+}))().catch(console.error);
+
+P35 — Today at 2:52 PM
+(async () => {
+// here is your new "global" code
+})().catch(console.error);
+You can make an outside function (like I did for fetchDOM) to gather a particular page
+function fetchPage (query, page) {
+    const queryParams = new URLSearchParams...;
+
+    return fetchDOM(`https://weheartit.com/search/entries?${queryParams}`);
+}
+
+A few notes: w3schools sucks, use devdocs for documentation;
+use fetch on the browser (it's native) and the equivalent node-fetch in node.js. Nothing else; jQuery is useless (but cheerio is fine because it's a DOM parser in node); learn array HOFs (higher-order functions). Those are
+- .map
+- .filter
+- .some/.every
+- .find/.findIndex
+- .reduce
+Never use .forEach
+You don't need to read all
+It's either js.info if you don't know programming, or impatient js if you already do
